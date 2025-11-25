@@ -6,17 +6,17 @@ IMAGE_PREFIX = "./images/"
 
 def convert_image_embeds(text):
 
-    # Case 1: ![[path/to/image.png]]
+    # Case 2 first: ![[path/to/image.png|Alt text]]
     text = re.sub(
-        r'!\[\[([^|\]]+)\]\]',
-        lambda m: f'![{os.path.basename(m.group(1))}]({IMAGE_PREFIX}{m.group(1)})',
+        r'!\[\[([^|\]]+)\|([^\]]+)\]\]',
+        lambda m: f'![{m.group(2)}]({IMAGE_PREFIX}{m.group(1).replace(" ", "_")})',
         text
     )
 
-    # Case 2: ![[path/to/image.png|Alt text]]
+    # Case 1: ![[path/to/image.png]]
     text = re.sub(
-        r'!\[\[([^|\]]+)\|([^\]]+)\]\]',
-        lambda m: f'![{m.group(2)}]({IMAGE_PREFIX}{m.group(1)})',
+        r'!\[\[([^|\]]+)\]\]',
+        lambda m: f'![{os.path.basename(m.group(1))}]({IMAGE_PREFIX}{m.group(1).replace(" ", "_")})',
         text
     )
 
