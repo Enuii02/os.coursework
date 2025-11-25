@@ -2,7 +2,7 @@ import re
 import sys
 import os
 
-IMAGE_PREFIX = "images/"
+IMAGE_PREFIX = "./images/"
 
 def convert_image_embeds(text):
 
