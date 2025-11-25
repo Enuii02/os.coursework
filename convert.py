@@ -1,18 +1,22 @@
 import re
 import sys
+import os
+
+IMAGE_PREFIX = "images/"
 
 def convert_image_embeds(text):
-    # ![[path/to/image.png]]
+
+    # Case 1: ![[path/to/image.png]]
     text = re.sub(
         r'!\[\[([^|\]]+)\]\]',
-        lambda m: f'![{m.group(1).split("/")[-1]}]({m.group(1)})',
+        lambda m: f'![{os.path.basename(m.group(1))}]({IMAGE_PREFIX}{m.group(1)})',
         text
     )
 
-    # ![[path/to/image.png|Alt text]]
+    # Case 2: ![[path/to/image.png|Alt text]]
     text = re.sub(
         r'!\[\[([^|\]]+)\|([^\]]+)\]\]',
-        lambda m: f'![{m.group(2)}]({m.group(1)})',
+        lambda m: f'![{m.group(2)}]({IMAGE_PREFIX}{m.group(1)})',
         text
     )
 
