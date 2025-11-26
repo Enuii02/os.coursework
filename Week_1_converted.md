@@ -2,7 +2,7 @@
 
 ## System Architecture Diagram
 
-![alt text](./images/image.png)
+![alt text](image.png)
 
 ## Distribution Justification
 
@@ -20,22 +20,22 @@ On both of the Virtual machines, port forwarding has been set up for access via 
 
 ### Debian
 
-![alt text](./images/port_forwarding_1.png)
+![alt text](port_forwarding_1.png)
 
 ### Ubuntu
 
-![alt text](./images/port_forwarding_2.png)
+![alt text](port_forwarding_2.png)
 
 Additionally, a host-only adapter has been set up on both VM to enable lan-like communication between the virtual machines as well as with the host. IP addresses have been configured automatically with DHCP.
 
 ## System Specification
 
 ### Ubuntu
-![alt text](./images/Week_1%20Commands.png)
+![alt text](Week_1%20Commands.png)
 
 ### Debian
 
-![alt text](./images/Week_1%20commands%202.png)
+![alt text](Week_1%20commands%202.png)
 
 
-Hello from obsidian![[Screenshot 2025-07-09 233401.png]]
+Hello from obsidian![Screenshot 2025-07-09 233401.png](./images/Screenshot_2025-07-09_233401.png)
