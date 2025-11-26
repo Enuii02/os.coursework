@@ -38,4 +38,4 @@ Additionally, a host-only adapter has been set up on both VM to enable lan-like 
 ![alt text](./images/Week_1%20commands%202.png)
 
 
-Hello from obsidian
+Hello from obsidian![[Screenshot 2025-07-09 233401.png]]
