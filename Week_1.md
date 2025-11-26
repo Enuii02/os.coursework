@@ -36,3 +36,6 @@ Additionally, a host-only adapter has been set up on both VM to enable lan-like 
 ### Debian
 
 ![alt text](./images/Week_1%20commands%202.png)
+
+
+Hello from obsidian
