@@ -35,7 +35,7 @@ Enter the server from game
 
 ![Pasted image 20251210124416.png](./images/Pasted_image_20251210124416.png)
 
-![Minecraft_ 1.18.2 - Multiplayer (3rd-party Server) 10_12_2025 12_53_11.png](./images/Minecraft__1.18.2_-_Multiplayer_(3rd-party_Server)_10_12_2025_12_53_11.png)
+![Minecraft](./images/Minecraft__1.18.2_-_Multiplayer_(3rd-party_Server)_10_12_2025_12_53_11.png)
 
 The virtual machine could not keep up with the demands. Especially the CPU as indicated by the server console, and memory as shown below.
 
