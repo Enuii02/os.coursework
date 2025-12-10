@@ -1,22 +1,42 @@
+"""
+This file isn't part of the coursework.
+It is a script to convert markdown syntax from my note taking app (Obsidian)
+to markdown syntax that Github accepts.
+
+To run:
+python convert.py input.md output.md
+"""
+
 import re
 import sys
 import os
 
 IMAGE_PREFIX = "./images/"
 
+# converts the embeds
 def convert_image_embeds(text):
+    """
+    Convert Obsidian-style image embeds to GitHub-style markdown,
+    replacing spaces in filenames with underscores.
+    """
 
-    # Case 2 first: ![[path/to/image.png|Alt text]]
-    text = re.sub(
-        r'!\[\[([^|\]]+)\|([^\]]+)\]\]',
-        lambda m: f'![{m.group(2)}]({IMAGE_PREFIX}{m.group(1).replace(" ", "_")})',
-        text
-    )
+    def sanitize_filename(path):
+        # Replace spaces with underscores in the filename only
+        dirname, filename = os.path.split(path)
+        filename = filename.replace(" ", "_")
+        return os.path.join(dirname, filename)
 
     # Case 1: ![[path/to/image.png]]
     text = re.sub(
         r'!\[\[([^|\]]+)\]\]',
-        lambda m: f'![{os.path.basename(m.group(1))}]({IMAGE_PREFIX}{m.group(1).replace(" ", "_")})',
+        lambda m: f'![{os.path.basename(m.group(1))}]({IMAGE_PREFIX}{sanitize_filename(m.group(1))})',
+        text
+    )
+
+    # Case 2: ![[path/to/image.png|Alt text]]
+    text = re.sub(
+        r'!\[\[([^|\]]+)\|([^\]]+)\]\]',
+        lambda m: f'![{m.group(2)}]({IMAGE_PREFIX}{sanitize_filename(m.group(1))})',
         text
     )
 
@@ -25,7 +45,7 @@ def convert_image_embeds(text):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python convert_obsidian_images.py input.md output.md")
+        print("Usage: python convert.py input.md output.md")
         sys.exit(1)
 
     input_file, output_file = sys.argv[1], sys.argv[2]
