@@ -13,6 +13,12 @@ import os
 
 IMAGE_PREFIX = "./images/"
 
+def sanitize_filename(path = "./images"):
+    # Replace spaces with underscores in the filename only
+    dirname, filename = os.path.split(path)
+    filename = filename.replace(" ", "_")
+    return os.path.join(dirname, filename)
+
 # converts the embeds
 def convert_image_embeds(text):
     """
@@ -20,11 +26,7 @@ def convert_image_embeds(text):
     replacing spaces in filenames with underscores.
     """
 
-    def sanitize_filename(path):
-        # Replace spaces with underscores in the filename only
-        dirname, filename = os.path.split(path)
-        filename = filename.replace(" ", "_")
-        return os.path.join(dirname, filename)
+    sanitize_filename()
 
     # Case 1: ![[path/to/image.png]]
     text = re.sub(
