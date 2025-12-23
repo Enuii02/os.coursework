@@ -9,3 +9,5 @@ Welcome to the coursework documentation, please select one of the technical jour
 - [Security Planning and Testing Methodology (Week 2)](Week_2.md)
 - [Security Planning and Testing Methodology (Week 3)](Week_3.md)
 - [Security Planning and Testing Methodology (Week 4)](Week_4.md)
+- [Security Planning and Testing Methodology (Week 4)](Week_5.md)
+
