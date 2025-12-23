@@ -7,7 +7,7 @@ Welcome to the coursework documentation, please select one of the technical jour
 ## Contents
 - [System Planning and Distribution Selection (Week 1)](Week_1.md)
 - [Security Planning and Testing Methodology (Week 2)](Week_2.md)
-- [Security Planning and Testing Methodology (Week 3)](Week_3.md)
-- [Security Planning and Testing Methodology (Week 4)](Week_4.md)
-- [Security Planning and Testing Methodology (Week 4)](Week_5.md)
+- [Application Selection for Performance Testing (Week 3)](Week_3.md)
+- [Initial System Configuration & Security Implementation (Week 4)](Week_4.md)
+- [Advanced Security and Monitoring Infrastructure (Week 5)](Week_5.md)
 

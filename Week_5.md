@@ -77,12 +77,13 @@ OS detection:
 
 ### Detected open ports:
 
-| Port  | State  | Protocol | Service          | Justification for Being Open       |
-| ----- | ------ | -------- | ---------------- | ---------------------------------- |
-| 22    | open   | ssh      | OpenSSH          | Required for remote administration |
-| 2222  | Closed | ssh      | OpenSSh          | Not open                           |
-| 9090  | open   | tcp      | Zeus-admin       | Required to access Cockpit         |
-| 25565 | closed | tcp      | minecraft-server | Not open                           |
+| Port  | State  | Protocol | Service           | Justification for Being Open       |
+|-------|--------|----------|-------------------|-----------------------------------|
+| 22    | Open   | SSH      | OpenSSH           | Required for remote administration |
+| 2222  | Closed | SSH      | OpenSSH           | Not open                           |
+| 9090  | Open   | TCP      | Cockpit (9090)    | Required to access Cockpit         |
+| 25565 | Closed | TCP      | Minecraft Server  | Not open                           |
+
 *Please note that although nmap reported Zeus-admin, the actual service is Cockpit. This is normal for nmap, source: https://nmap.org/book/osdetect-unidentified.html* 
 
 ### Verifying firewall effectiveness
