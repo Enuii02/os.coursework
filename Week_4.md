@@ -36,7 +36,7 @@ proof of use of administrative command via ssh:
 
 
 ---
-## Lab
+## Lab![[WindowsTerminal_RmxnsfV2ks 2.png]]
 
 ### AppArmor status:
  
@@ -78,7 +78,7 @@ MAC (Mandatory Access Control) - permission set based on system-wide policy.
 
 ![Pasted image 20251214123424.png](./images/Pasted_image_20251214123424.png)
 
-### fail2ban configuration
+### ![[WindowsTerminal_RmxnsfV2ks 1.png]]fail2ban configuration
 
 ![Pasted image 20251214125230.png](./images/Pasted_image_20251214125230.png)
 
