@@ -112,43 +112,45 @@ attempting to access blocked ports:
 services running:
 ![WindowsTerminal_zWXJ86bJHV.png](./images/WindowsTerminal_zWXJ86bJHV.png)
 
-| Service                     | Port     | Protocol | Purpose                                           | Necessary? | Security Measures                                |
-|------------------------------|---------|---------|--------------------------------------------------|------------|-------------------------------------------------|
-| sshd                         | 22      | TCP     | Remote administration via SSH                    | Yes        | Key-based auth, disable root login, fail2ban    |
-| cron                         |         |         | Scheduled task execution                          | Yes        | Run as restricted user, validate scripts       |
-| dbus                         |         |         | Inter-process communication                       | Yes        | Use systemd policies, minimal permissions      |
-| fail2ban                     |         |         | Blocks IPs with suspicious login behavior        | Optional   | Monitors logs, updates firewall rules          |
-| getty@tty1                   |         |         | Login prompt on virtual console                   | Yes        | Limit to physical access, strong passwords     |
-| ModemManager                 |         |         | Manages mobile broadband modems                   | Optional   | Restrict access to trusted users               |
-| multipathd                   |         |         | Multipath storage path management                 | Optional   | Use ACLs for storage management                |
-| NetworkManager               |         |         | Manages network connections                       | Yes        | WPA2/WPA3, VPN policies                         |
-| polkit                       |         |         | Authorization for privileged actions             | Yes        | Use proper policies, least privilege           |
-| rsyslog                      |         |         | System logging                                   | Yes        | Log rotation, restrict log access              |
-| snap.docker.dockerd           |         | TCP     | Docker daemon for containers                     | Optional   | Use TLS for API, restricted users              |
-| snapd                        |         |         | Snap package management                          | Optional   | App confinement, update snaps regularly        |
-| systemd-journald             |         |         | System log collection                             | Yes        | Restrict journal access, persistent storage    |
-| systemd-logind               |         |         | User login/session management                     | Yes        | Limit sessions, audit login activity           |
-| systemd-networkd             |         |         | Network interface configuration                   | Yes        | Firewall, minimal exposure                     |
-| systemd-resolved             | 53      | TCP/UDP | DNS resolution                                   | Yes        | Local-only bind, DNSSEC                        |
-| systemd-timesyncd            | 123     | UDP     | Time synchronization with NTP                     | Yes        | Use trusted NTP servers                        |
-| systemd-udevd                |         |         | Device event management                            | Yes        | Device permissions, kernel restrictions       |
-| udisks2                      |         |         | Disk and storage management                        | Optional   | Restrict mount/unmount privileges              |
-| unattended-upgrades          |         |         | Automatic security updates                         | Yes        | Verify packages, secure repositories          |
-| upower                       |         |         | Power/battery management                           | Optional   | Limited permissions                             |
-| user@1000                    |         |         | User-specific service manager                       | Yes        | Limited to user processes                       |
-| wpa_supplicant               |         | TCP/UDP | Wi-Fi authentication and management                | Yes        | WPA2/WPA3, strong passwords                     |
+| Service                   | Port | Protocol | Purpose                                    | Necessary? | Security Measures                                   |
+|---------------------------|------|----------|--------------------------------------------|------------|----------------------------------------------------|
+| sshd                      | 22   | TCP      | Remote administration via SSH               | Yes        | Key-based auth, disable root login, Fail2Ban       |
+| cron                      | N/A  | N/A      | Scheduled task execution                    | Yes        | Run as restricted user, validate scripts           |
+| dbus                      | N/A  | N/A      | Inter-process communication                 | Yes        | systemd policies, minimal permissions              |
+| fail2ban                  | N/A  | N/A      | Blocks IPs with suspicious login behavior   | Optional   | Monitors logs, updates firewall rules              |
+| getty@tty1                | N/A  | N/A      | Login prompt on virtual console             | Yes        | Physical access only, strong passwords             |
+| ModemManager              | N/A  | N/A      | Manages mobile broadband modems             | Optional   | Restrict access to trusted users                   |
+| multipathd                | N/A  | N/A      | Multipath storage path management           | Optional   | ACLs for storage management                        |
+| NetworkManager            | N/A  | N/A      | Manages network connections                 | Yes        | WPA2/WPA3, VPN policies                            |
+| polkit                    | N/A  | N/A      | Authorization for privileged actions        | Yes        | Least-privilege policies                           |
+| rsyslog                   | N/A  | N/A      | System logging                              | Yes        | Log rotation, restricted log access                |
+| snap.docker.dockerd       | N/A  | TCP      | Docker daemon for containers                | Optional   | TLS for API, restricted users                      |
+| snapd                     | N/A  | N/A      | Snap package management                     | Optional   | App confinement, regular updates                   |
+| systemd-journald          | N/A  | N/A      | System log collection                       | Yes        | Restricted journal access                          |
+| systemd-logind            | N/A  | N/A      | User login and session management           | Yes        | Session limits, login auditing                     |
+| systemd-networkd          | N/A  | N/A      | Network interface configuration             | Yes        | Firewall rules, minimal exposure                   |
+| systemd-resolved          | 53   | TCP/UDP  | DNS resolution                              | Yes        | Local-only binding, DNSSEC                         |
+| systemd-timesyncd         | 123  | UDP      | Time synchronization (NTP)                  | Yes        | Trusted NTP servers                                |
+| systemd-udevd             | N/A  | N/A      | Device event management                     | Yes        | Device permissions, kernel restrictions            |
+| udisks2                   | N/A  | N/A      | Disk and storage management                 | Optional   | Restricted mount/unmount privileges                |
+| unattended-upgrades       | N/A  | N/A      | Automatic security updates                  | Yes        | Verified repositories                              |
+| upower                    | N/A  | N/A      | Power and battery management                | Optional   | Limited permissions                                |
+| user@1000                 | N/A  | N/A      | User-specific service manager               | Yes        | Confined to user processes                         |
+| wpa_supplicant            | N/A  | TCP/UDP  | Wi-Fi authentication and management         | Yes        | WPA2/WPA3, strong credentials                     |
+
 ## kernel hardening
 
 ![WindowsTerminal_Pe9E0ssNZz.png](./images/WindowsTerminal_Pe9E0ssNZz.png)
 
-| Setting                        | Purpose                     | Security Impact                           |
-| ------------------------------ | --------------------------- | ----------------------------------------- |
-| `tcp_syncookies = 1`           | Protects against SYN floods | Helps prevent DoS attacks                 |
-| `ip_forward = 0`               | Disables IPv4 routing       | Reduces attack surface                    |
-| `ipv6.conf.all.forwarding = 0` | Disables IPv6 routing       | Reduces attack surface                    |
-| `accept_redirects = 0`         | Ignores ICMP redirects      | Prevents MITM routing attacks             |
-| `default.accept_redirects = 0` | Applies to new interfaces   | Ensures consistency                       |
-| `log_martians = 1`             | Logs suspicious packets     | Helps detect attacks or misconfigurations |
+| Setting                                   | Purpose                          | Security Impact                               |
+|-------------------------------------------|----------------------------------|-----------------------------------------------|
+| `net.ipv4.tcp_syncookies = 1`              | Protects against SYN floods      | Helps prevent denial-of-service attacks       |
+| `net.ipv4.ip_forward = 0`                  | Disables IPv4 routing            | Reduces attack surface                        |
+| `net.ipv6.conf.all.forwarding = 0`         | Disables IPv6 routing            | Reduces attack surface                        |
+| `net.ipv4.conf.all.accept_redirects = 0`   | Ignores ICMP redirects           | Prevents man-in-the-middle routing attacks    |
+| `net.ipv4.conf.default.accept_redirects=0` | Applies redirect policy globally| Ensures consistent interface behavior         |
+| `net.ipv4.conf.all.log_martians = 1`        | Logs suspicious packets          | Aids in attack detection and troubleshooting |
+
 ## Security risks associated with SUID files
 
 SUID or Set User ID files, are executed with owner privileges, rather than the users.
@@ -198,11 +200,12 @@ Audit logs provide a detailed and timestamped information about processes happen
 
 ![Photoshop_fWNdHTzrWv.png](./images/Photoshop_fWNdHTzrWv.png)
 
-| Metric             | Initial | After Hardening | Improvement |
-|-------------------|--------|----------------|------------|
-| Hardening Index    | 61/100 | 75/100         | +14 points |
-| Warnings           | 48     | 20             | Reduced by 28 |
-| Suggestions        | 36     | 12             | Reduced by 24 |
-| Tests Passed       | 72     | 85             | +13 tests |
+| Metric           | Initial | After Hardening | Improvement      |
+|------------------|:-------:|:---------------:|------------------|
+| Hardening Index  | 61/100  | 75/100          | +14 points      |
+| Warnings         | 48      | 20              | Reduced by 28   |
+| Suggestions      | 36      | 12              | Reduced by 24   |
+| Tests Passed     | 72      | 85              | +13 tests       |
+
 
 
