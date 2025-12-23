@@ -112,44 +112,11 @@ attempting to access blocked ports:
 services running:
 ![WindowsTerminal_zWXJ86bJHV.png](./images/WindowsTerminal_zWXJ86bJHV.png)
 
-| Service                   | Port | Protocol | Purpose                                    | Necessary? | Security Measures                                   |
-|---------------------------|------|----------|--------------------------------------------|------------|----------------------------------------------------|
-| sshd                      | 22   | TCP      | Remote administration via SSH               | Yes        | Key-based auth, disable root login, Fail2Ban       |
-| cron                      | N/A  | N/A      | Scheduled task execution                    | Yes        | Run as restricted user, validate scripts           |
-| dbus                      | N/A  | N/A      | Inter-process communication                 | Yes        | systemd policies, minimal permissions              |
-| fail2ban                  | N/A  | N/A      | Blocks IPs with suspicious login behavior   | Optional   | Monitors logs, updates firewall rules              |
-| getty@tty1                | N/A  | N/A      | Login prompt on virtual console             | Yes        | Physical access only, strong passwords             |
-| ModemManager              | N/A  | N/A      | Manages mobile broadband modems             | Optional   | Restrict access to trusted users                   |
-| multipathd                | N/A  | N/A      | Multipath storage path management           | Optional   | ACLs for storage management                        |
-| NetworkManager            | N/A  | N/A      | Manages network connections                 | Yes        | WPA2/WPA3, VPN policies                            |
-| polkit                    | N/A  | N/A      | Authorization for privileged actions        | Yes        | Least-privilege policies                           |
-| rsyslog                   | N/A  | N/A      | System logging                              | Yes        | Log rotation, restricted log access                |
-| snap.docker.dockerd       | N/A  | TCP      | Docker daemon for containers                | Optional   | TLS for API, restricted users                      |
-| snapd                     | N/A  | N/A      | Snap package management                     | Optional   | App confinement, regular updates                   |
-| systemd-journald          | N/A  | N/A      | System log collection                       | Yes        | Restricted journal access                          |
-| systemd-logind            | N/A  | N/A      | User login and session management           | Yes        | Session limits, login auditing                     |
-| systemd-networkd          | N/A  | N/A      | Network interface configuration             | Yes        | Firewall rules, minimal exposure                   |
-| systemd-resolved          | 53   | TCP/UDP  | DNS resolution                              | Yes        | Local-only binding, DNSSEC                         |
-| systemd-timesyncd         | 123  | UDP      | Time synchronization (NTP)                  | Yes        | Trusted NTP servers                                |
-| systemd-udevd             | N/A  | N/A      | Device event management                     | Yes        | Device permissions, kernel restrictions            |
-| udisks2                   | N/A  | N/A      | Disk and storage management                 | Optional   | Restricted mount/unmount privileges                |
-| unattended-upgrades       | N/A  | N/A      | Automatic security updates                  | Yes        | Verified repositories                              |
-| upower                    | N/A  | N/A      | Power and battery management                | Optional   | Limited permissions                                |
-| user@1000                 | N/A  | N/A      | User-specific service manager               | Yes        | Confined to user processes                         |
-| wpa_supplicant            | N/A  | TCP/UDP  | Wi-Fi authentication and management         | Yes        | WPA2/WPA3, strong credentials                     |
-
-## kernel hardening
+![WindowsTerminal_zWXJ86bJHV.png](./images/opera_M1l0ttkdlf.png)
 
 ![WindowsTerminal_Pe9E0ssNZz.png](./images/WindowsTerminal_Pe9E0ssNZz.png)
 
-| Setting                                   | Purpose                          | Security Impact                               |
-|-------------------------------------------|----------------------------------|-----------------------------------------------|
-| `net.ipv4.tcp_syncookies = 1`              | Protects against SYN floods      | Helps prevent denial-of-service attacks       |
-| `net.ipv4.ip_forward = 0`                  | Disables IPv4 routing            | Reduces attack surface                        |
-| `net.ipv6.conf.all.forwarding = 0`         | Disables IPv6 routing            | Reduces attack surface                        |
-| `net.ipv4.conf.all.accept_redirects = 0`   | Ignores ICMP redirects           | Prevents man-in-the-middle routing attacks    |
-| `net.ipv4.conf.default.accept_redirects=0` | Applies redirect policy globally| Ensures consistent interface behavior         |
-| `net.ipv4.conf.all.log_martians = 1`        | Logs suspicious packets          | Aids in attack detection and troubleshooting |
+![WindowsTerminal_Pe9E0ssNZz.png](./images/Obsidian_xwryGPxzdz.png)
 
 ## Security risks associated with SUID files
 
