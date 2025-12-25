@@ -10,4 +10,6 @@ Welcome to the coursework documentation, please select one of the technical jour
 - [Application Selection for Performance Testing (Week 3)](Week_3.md)
 - [Initial System Configuration & Security Implementation (Week 4)](Week_4.md)
 - [Advanced Security and Monitoring Infrastructure (Week 5)](Week_5.md)
+- [Performance Evaluation and Analysis (Week 6)](Week_6.md)
+
 
