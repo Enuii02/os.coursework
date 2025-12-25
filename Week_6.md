@@ -48,6 +48,9 @@ network usage on Cockpit:
 - Memory management optimisation with `echo "vm.swappiness=10" | sudo tee /etc/sysctl.d/99-swappiness.conf` for reduces swap usage and reduced latency.
 - I/O optimisation with `noatime` for reduced disk writes.
 
+![[python3.13_iAh9aUriPR.png]]
+
+
 
 ---
 # Lab

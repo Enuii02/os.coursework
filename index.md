@@ -11,5 +11,5 @@ Welcome to the coursework documentation, please select one of the technical jour
 - [Initial System Configuration & Security Implementation (Week 4)](Week_4.md)
 - [Advanced Security and Monitoring Infrastructure (Week 5)](Week_5.md)
 - [Performance Evaluation and Analysis (Week 6)](Week_6.md)
-
+- [Security Audit and System Evaluation (Week 7)](Week_7.md)
 
